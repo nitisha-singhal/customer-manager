@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% block 'title' %}items{% endblock %}
+{%block 'content' %}
+{% load static %}
+
+<div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+               <div class="header-icon">
+                  <i class="fa fa-suitcase"></i>
+               </div>
+               <div class="header-title">
+                  <h1>Items</h1>
+                  <small>List of items</small>
+               </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="panel panel-bd lobidrag">
+                        <div class="panel-heading">
+                           <div class="btn-group" id="buttonexport">
+                              <a href="#">
+                                 <h4>Items details</h4>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="panel-body">
+                        <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                           <div class="btn-group">
+                              <div class="buttonexport"> 
+                                 <a href="#" class="btn btn-add" data-toggle="modal" data-target="#additem"><i class="fa fa-plus"></i> Add Items</a>  
+                              </div>
+                              <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Table Data</button>
+                              <ul class="dropdown-menu exp-drop" role="menu">
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'json',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/json.png' %} " width="24" alt="logo"> JSON</a>
+                                 </li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});">
+                                    <img src=" {% static 'Modified_files/assets/dist/img/json.png' %} " width="24" alt="logo"> JSON (ignoreColumn)</a>
+                                 </li>
+                                 <li><a href="#" onclick="$('#dataTableExample1').tableExport({type:'json',escape:'true'});">
+                                    <img src=" {% static 'Modified_files/assets/dist/img/json.png' %} " width="24" alt="logo"> JSON (with Escape)</a>
+                                 </li>
+                                 <li class="divider"></li>
+                                 <li><a href="#" onclick="$('#dataTableExample1').tableExport({type:'xml',escape:'false'});">
+                                    <img src=" {% static 'Modified_files/assets/dist/img/xml.png' %} " width="24" alt="logo"> XML</a>
+                                 </li>
+                                 <li><a href="#" onclick="$('#dataTableExample1').tableExport({type:'sql'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/sql.png' %} " width="24" alt="logo"> SQL</a>
+                                 </li>
+                                 <li class="divider"></li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'csv',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/csv.png' %} " width="24" alt="logo"> CSV</a>
+                                 </li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'txt',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/txt.png' %} " width="24" alt="logo"> TXT</a>
+                                 </li>
+                                 <li class="divider"></li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'excel',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/xls.png' %} " width="24" alt="logo"> XLS</a>
+                                 </li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'doc',escape:'false'});">
+                                    <img src=" {% static 'Modified_files/assets/dist/img/word.png' %} " width="24" alt="logo"> Word</a>
+                                 </li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'powerpoint',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/ppt.png' %} " width="24" alt="logo"> PowerPoint</a>
+                                 </li>
+                                 <li class="divider"></li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'png',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/png.png' %} " width="24" alt="logo"> PNG</a>
+                                 </li>
+                                 <li>
+                                    <a href="#" onclick="$('#dataTableExample1').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});"> 
+                                    <img src=" {% static 'Modified_files/assets/dist/img/pdf.png' %} " width="24" alt="logo"> PDF</a>
+                                 </li>
+                              </ul>
+                           </div>
+                           <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                           <div class="table-responsive">
+                              <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                                 <thead>
+                                    <tr class="info">
+                                       <th>Serial No.</th>
+                                       <th>Item Code</th>
+                                       <th>Item Name</th>
+                                       <th>Quantity</th>
+                                       <th>Description</th>
+                                       <th>Unit price</th>
+                                       <th>Discount</th>
+                                       <th>status</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>
+                                          <div class="checkbox checkbox-info">
+                                             <input id="checkbox1" type="checkbox">
+                                             <label for="checkbox1">01</label>
+                                          </div>
+                                       </td>
+                                       <td>ITM 5654</td>
+                                       <td>Remote control</td>
+                                       <td>54</td>
+                                       <td>Tv,freez,Ac etc.</td>
+                                       <td>$ 1,307.00</td>
+                                       <td>$ 37.00</td>
+                                       <td><span class="label-danger label label-default" >Available</span>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div class="checkbox checkbox-info">
+                                             <input id="checkbox2" type="checkbox">
+                                             <label for="checkbox2">02</label>
+                                          </div>
+                                       </td>
+                                       <td>ITM 654</td>
+                                       <td>TV</td>
+                                       <td>45</td>
+                                       <td>LG,samsung etc.</td>
+                                       <td>$ 3,654.00</td>
+                                       <td>$ 306.00</td>
+                                       <td><span class="label-custom label label-default">Available</span>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div class="checkbox checkbox-info">
+                                             <input id="checkbox3" type="checkbox">
+                                             <label for="checkbox3">03</label>
+                                          </div>
+                                       </td>
+                                       <td>ITM 842</td>
+                                       <td>Monitor</td>
+                                       <td>00</td>
+                                       <td>LG,samsung etc.</td>
+                                       <td>$ 3,654.00</td>
+                                       <td>$ 306.00</td>
+                                       <td><span class="label-danger label label-default">Out of stock</span>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- items Modal1 -->
+               <div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                           <h3><i class="fa fa-plus m-r-5"></i> Add new Item</h3>
+                        </div>
+                        <div class="modal-body">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <form class="form-horizontal">
+                                    <fieldset>
+                                       <!-- Text input-->
+                                       <div class="col-md-4 form-group">
+                                          <label class="control-label">Item Code</label>
+                                          <input type="text" placeholder="Item Code" class="form-control">
+                                       </div>
+                                       <!-- Text input-->
+                                       <div class="col-md-4 form-group">
+                                          <label class="control-label">Item Name</label>
+                                          <input type="text" placeholder="Item Name" class="form-control">
+                                       </div>
+                                       <!-- Text input-->
+                                       <div class="col-md-4 form-group">
+                                          <label class="control-label">Quantity</label>
+                                          <input type="number" placeholder="Quantity" class="form-control">
+                                       </div>
+                                       <div class="col-md-6 form-group">
+                                          <label class="control-label">Unit price</label>
+                                          <input type="number" placeholder="Unit price" class="form-control">
+                                       </div>
+                                       <div class="col-md-6 form-group">
+                                          <label class="control-label">Discount</label>
+                                          <input type="number" placeholder="Discount" class="form-control">
+                                       </div>
+                                       <div class="col-md-12 form-group">
+                                          <label class="control-label">Description</label><br>
+                                          <textarea name="Description" rows="3">
+                                          </textarea>
+                                       </div>
+                                       <div class="col-md-12 form-group user-form-group">
+                                          <div class="pull-right">
+                                             <button type="button" class="btn btn-danger btn-sm">Cancel</button>
+                                             <button type="submit" class="btn btn-add btn-sm">Save</button>
+                                          </div>
+                                       </div>
+                                    </fieldset>
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                     <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+               </div>
+               <!-- /.modal -->
+               <!-- Modal -->    
+            </section>
+            <!-- /.content -->
+         </div>
+{% endblock %}
