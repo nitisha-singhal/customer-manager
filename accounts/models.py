@@ -1,15 +1,16 @@
 from django.db import models
+from django.conf import settings
+from ckeditor.fields import RichTextField
+from django.utils import timezone
 
 class user(models.Model):
-    firstname = forms.CharField(max_length=20, required=True)
-    lastname = forms.CharField(max_length=20, required=True)
-    skills = forms.CharField(label="Your Skills",
-                            widget=CKEditorWidget,
-                            required=True)
-    country = forms.CharField(max_length=50)
-    company = forms.CharField(max_length=20, required=False)
-    city = forms.CharField(max_length=50)
-    email = forms.EmailField()
+    firstname = models.CharField(max_length=20)
+    lastname = models.CharField(max_length=20)
+    skills = RichTextField()
+    country = models.CharField(max_length=50)
+    company = models.CharField(max_length=20)
+    city = models.CharField(max_length=50)
+    email = models.EmailField()
 
 class upcoming(models.Model):
     title = models.CharField(max_length=100)

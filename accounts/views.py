@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from main.forms import UserRegistrationForm
+from accounts.forms import UserRegistrationForm
 from django.contrib.auth import authenticate, login
-from main.models import user
+from accounts.models import user
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
